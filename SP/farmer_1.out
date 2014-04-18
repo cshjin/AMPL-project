@@ -1,0 +1,63 @@
+Presolve eliminates 1 constraint.
+Adjusted problem:
+10 variables, all linear
+5 constraints, all linear; 15 nonzeros
+        5 inequality constraints
+1 linear objective; 10 nonzeros.
+
+CPLEX 12.6.0.0: sensitivity
+CPLEX 12.6.0.0: optimal solution; objective 118600
+5 dual simplex iterations (4 in phase I)
+
+suffix up OUT;
+suffix down OUT;
+suffix current OUT;
+
+: _objname    _obj     :=
+1   profit   118600
+;
+
+:       _varname       _var _var.lb   _var.ub       _var.rc        :=
+1    "area['wheat']"    120     0     Infinity      0
+2    "area['corn']"      80     0     Infinity     -5.68434e-14
+3    "area['beets']"    300     0     Infinity      0
+4    "sell['wheat']"    100     0     Infinity      0
+5    "sell['corn']"       0     0     Infinity    -18.3333
+6    "sell['beets']"   6000     0         6000      0
+7    sellExcess           0     0     Infinity    -16.75
+8    "buy['wheat']"       0     0     Infinity    -68
+9    "buy['corn']"        0     0     Infinity    -41.6667
+10   "buy['beets']"       0     0     Infinity   -100
+;
+
+:       _varname       _var.down _var.current    _var.up     :=
+1    "area['wheat']"     -205         -150        -25
+2    "area['corn']"      -355         -230       -175
+3    "area['beets']"     -445         -260         75
+4    "sell['wheat']"      148          170        220
+5    "sell['corn']"    -1e+20          150        168.333
+6    "sell['beets']"       26.75        36      1e+20
+7    sellExcess        -1e+20           10         26.75
+8    "buy['wheat']"    -1e+20         -238       -170
+9    "buy['corn']"     -1e+20         -210       -168.333
+10   "buy['beets']"    -1e+20         -100          0
+;
+
+:          _conname        _con.slack  _con.dual    :=
+1   totalArea                   0        275
+2   "requirement['wheat']"      0       -170
+3   "requirement['corn']"       0       -168.333
+4   "requirement['beets']"      0          0
+5   quota                       0          9.25
+6   sellBeets                   0         26.75
+;
+
+:          _conname        _con.down _con.current _con.up    :=
+1   totalArea                   460       500       1e+20
+2   "requirement['wheat']"   -1e+20       200         300
+3   "requirement['corn']"         0       240         360
+4   "requirement['beets']"   -1e+20         0           0
+5   quota                         0         0           0
+6   sellBeets                  -800         0           0
+;
+

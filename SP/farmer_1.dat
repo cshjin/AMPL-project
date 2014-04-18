@@ -1,0 +1,25 @@
+data;
+set Crops := wheat corn beets;
+param TotalArea:=500;
+param BeetsQuota:=6000;
+param Yield :=
+	wheat 2.5
+	corn 3
+	beets 20;
+param MinRequirement :=
+	wheat 200
+	corn 240
+	beets 0;
+param PlantingCost :=
+	wheat 150
+	corn 230
+	beets 260;
+param SellingPrice :=
+	wheat 170
+	corn 150
+	beets 36;
+param ExcessSellingPrice := 10;
+param BuyingPrice :=
+	wheat 238
+	corn 210
+	beets 100;
