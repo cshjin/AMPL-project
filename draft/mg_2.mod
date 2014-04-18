@@ -29,13 +29,27 @@ minimize cost:
 	SellingPrice * (amount['BG'] + amount['RG']) + 
 	
 	sum {s in Scenarios} P[s] * (
-		TransitionPrice * (amount_stage['BC',s]+amount_stage['BG',s]
-		+amount_stage['GB',s]+amount_stage['RB',s]) +
-	ReservePrice * (InitBattery-amount['BC'] - amount['BG']
-		+amount['GB']+amount['RB'] - amount_stage['BC',s]-amount_stage['BG',s]
-		+amount_stage['GB',s]+amount_stage['RB',s]) +
-	BuyingPrice_stage[s] * (amount_stage['GB',s] + amount_stage['GC',s]) -
-	SellingPrice_stage[s] * (amount_stage['BG',s] + amount_stage['RG',s]));
+		TransitionPrice * (
+			amount_stage['BC',s]
+			+amount_stage['BG',s]
+			+amount_stage['GB',s]
+			+amount_stage['RB',s]) +
+		ReservePrice * (
+			InitBattery
+			-amount['BC'] 
+			-amount['BG']
+			+amount['GB']
+			+amount['RB'] 
+			-amount_stage['BC',s]
+			-amount_stage['BG',s]
+			+amount_stage['GB',s]
+			+amount_stage['RB',s]) +
+		BuyingPrice_stage[s] * (
+			amount_stage['GB',s] 
+			+ amount_stage['GC',s]) -
+		SellingPrice_stage[s] * (
+			amount_stage['BG',s] 
+			+ amount_stage['RG',s]));
 
 s.t. meetDemand:
 	amount['BC'] + amount['GC'] + amount['RC'] 
@@ -85,10 +99,10 @@ param ReservePrice := 0.001;
 param SellingPrice := 0.074;
 param BuyingPrice :=0.091;
 param SellingPrice_stage :=
-	N 0.091
-	A 0.084
-	M 0.057;
-param BuyingPrice_stage :=
 	N 0.074
 	A 0.063
 	M 0.047;
+param BuyingPrice_stage :=
+	N 0.091
+	A 0.084
+	M 0.057;
