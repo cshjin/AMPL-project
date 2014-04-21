@@ -1,7 +1,7 @@
 AMPL-project
 ============
 
-This is a primal project related to course MATH 535, however the AMPL (A mathematical Programming Language) is the main object 
+This is a primal project related to course MATH 535, however the AMPL (A mathematical Programming Language) is the main objective. 
 
 
 [AMPL](http://www.ampl.com) is a comprehensive and powerful algebraic modeling language for linear and nonlinear optimization problems, in discrete or continuous variables.
