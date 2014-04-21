@@ -10,21 +10,29 @@ option cplex_options 'sensitivity';
 option precision 4;
 option show_stats 1;
 include mg_2.mod;
+option show_stats 1;
+for { i in 1.. 3} {
+	display "test";
+	solve > mg_2.out;
 
-solve;
+	display _objname, _obj > mg_2.out;
+	 # Print out the value of the objective function 
+	display _varname, _var, _var.lb,_var.ub, _var.rc > mg_2.out;
+	 # Print out names, values and reduced costs 
+#	display _varname, _var.down, _var.current, _var.up > mg_2.out;
+	 # Print out names, objective function coefficients 
+	 # together with what can be changed without causing 
+	 # a base change 
+	 # down = lower limit, up = upper limit 
+#	display _conname, _con.slack, _con.dual > mg_2.out;
+	 # Print out constraint name, slack and shadow price 
+#	display _conname,_con.down,_con.current,_con.up > mg_2.out;
+	 # Print out constraint name, right-hand side coefficient 
+	 # together with what can be changed without causing 
+	 # a base change 
 
-display _objname, _obj > mg_2.out;
- # Print out the value of the objective function 
-display _varname, _var, _var.lb,_var.ub, _var.rc > mg_2.out;
- # Print out names, values and reduced costs 
-display _varname, _var.down, _var.current, _var.up > mg_2.out;
- # Print out names, objective function coefficients 
- # together with what can be changed without causing 
- # a base change 
- # down = lower limit, up = upper limit 
-display _conname, _con.slack, _con.dual > mg_2.out;
- # Print out constraint name, slack and shadow price 
-display _conname,_con.down,_con.current,_con.up > mg_2.out;
- # Print out constraint name, right-hand side coefficient 
- # together with what can be changed without causing 
- # a base change 
+	let InitBattery := InitBattery 
+						+ amount['GB'] + amount['RB'] 
+						- amount['BG'] - amount['BC'];
+}
+
