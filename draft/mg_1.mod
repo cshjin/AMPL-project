@@ -33,11 +33,11 @@ data;
 
 set Directions:= BC BG GB GC RB RC RG;
 
-param InitBattery:= 50;
-param Demand:= 1000;
+param InitBattery := 50;
+param Demand := 1000;
 param Resources := 500;
 param BatteryCapacity := 100;
 param TransitionPrice := 0.002;
 param ReservePrice := 0.001;
-param SellingPrice := 0.074;
-param BuyingPrice :=0.091;
+param SellingPrice := 0.047;
+param BuyingPrice :=0.057;

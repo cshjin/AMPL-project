@@ -1,28 +1,29 @@
-CPLEX 12.6.0.0: sensitivity
+t = 1
+
 : _objname    _obj      :=
-1   cost     90.4875
+1   cost     76.1125
 ;
 
 :            _varname          _var _var.lb   _var.ub      _var.rc      :=
-1    "amount['BC']"              50     0     Infinity   6.07153e-18
-2    "amount['BG']"               0     0     Infinity   0.017
-3    "amount['GB']"               0     0     Infinity   0.004
-4    "amount['GC']"             450     0     Infinity   0
-5    "amount['RB']"               0     0     Infinity   0.004
-6    "amount['RC']"             500     0     Infinity   0
-7    "amount['RG']"               0     0     Infinity   0.017
-8    "amount_stage['BC','N']"     0     0     Infinity   0
-9    "amount_stage['BC','A']"     0     0     Infinity   0
-10   "amount_stage['BC','M']"     0     0     Infinity   0
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             550     0     Infinity   0
+5    "amount['RB']"              50     0     Infinity   0
+6    "amount['RC']"             450     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
 11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
-12   "amount_stage['BG','A']"     0     0     Infinity   0.0042
-13   "amount_stage['BG','M']"     0     0     Infinity   0.001
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
 14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
 15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
 16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
-17   "amount_stage['GC','N']"   500     0     Infinity   0
-18   "amount_stage['GC','A']"   750     0     Infinity   0
-19   "amount_stage['GC','M']"   875     0     Infinity   0
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
 20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
 21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
 22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
@@ -30,35 +31,51 @@ CPLEX 12.6.0.0: sensitivity
 24   "amount_stage['RC','A']"   250     0     Infinity   0
 25   "amount_stage['RC','M']"   125     0     Infinity   0
 26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
-27   "amount_stage['RG','A']"     0     0     Infinity   0.0042
-28   "amount_stage['RG','M']"     0     0     Infinity   0.001
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
 ;
 
-CPLEX 12.6.0.0: sensitivity
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 2
+
 : _objname    _obj      :=
-1   cost     94.9375
+1   cost     73.1625
 ;
 
 :            _varname          _var _var.lb   _var.ub      _var.rc      :=
-1    "amount['BC']"               0     0     Infinity   6.07153e-18
-2    "amount['BG']"               0     0     Infinity   0.017
-3    "amount['GB']"               0     0     Infinity   0.004
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
 4    "amount['GC']"             500     0     Infinity   0
-5    "amount['RB']"               0     0     Infinity   0.004
+5    "amount['RB']"               0     0     Infinity   0
 6    "amount['RC']"             500     0     Infinity   0
-7    "amount['RG']"               0     0     Infinity   0.017
-8    "amount_stage['BC','N']"     0     0     Infinity   0
-9    "amount_stage['BC','A']"     0     0     Infinity   0
-10   "amount_stage['BC','M']"     0     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
 11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
-12   "amount_stage['BG','A']"     0     0     Infinity   0.0042
-13   "amount_stage['BG','M']"     0     0     Infinity   0.001
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
 14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
 15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
 16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
-17   "amount_stage['GC','N']"   500     0     Infinity   0
-18   "amount_stage['GC','A']"   750     0     Infinity   0
-19   "amount_stage['GC','M']"   875     0     Infinity   0
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
 20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
 21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
 22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
@@ -66,35 +83,51 @@ CPLEX 12.6.0.0: sensitivity
 24   "amount_stage['RC','A']"   250     0     Infinity   0
 25   "amount_stage['RC','M']"   125     0     Infinity   0
 26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
-27   "amount_stage['RG','A']"     0     0     Infinity   0.0042
-28   "amount_stage['RG','M']"     0     0     Infinity   0.001
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
 ;
 
-CPLEX 12.6.0.0: sensitivity
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 3
+
 : _objname    _obj      :=
-1   cost     94.9375
+1   cost     73.1625
 ;
 
 :            _varname          _var _var.lb   _var.ub      _var.rc      :=
-1    "amount['BC']"               0     0     Infinity   6.07153e-18
-2    "amount['BG']"               0     0     Infinity   0.017
-3    "amount['GB']"               0     0     Infinity   0.004
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
 4    "amount['GC']"             500     0     Infinity   0
-5    "amount['RB']"               0     0     Infinity   0.004
+5    "amount['RB']"               0     0     Infinity   0
 6    "amount['RC']"             500     0     Infinity   0
-7    "amount['RG']"               0     0     Infinity   0.017
-8    "amount_stage['BC','N']"     0     0     Infinity   0
-9    "amount_stage['BC','A']"     0     0     Infinity   0
-10   "amount_stage['BC','M']"     0     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
 11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
-12   "amount_stage['BG','A']"     0     0     Infinity   0.0042
-13   "amount_stage['BG','M']"     0     0     Infinity   0.001
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
 14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
 15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
 16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
-17   "amount_stage['GC','N']"   500     0     Infinity   0
-18   "amount_stage['GC','A']"   750     0     Infinity   0
-19   "amount_stage['GC','M']"   875     0     Infinity   0
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
 20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
 21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
 22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
@@ -102,7 +135,700 @@ CPLEX 12.6.0.0: sensitivity
 24   "amount_stage['RC','A']"   250     0     Infinity   0
 25   "amount_stage['RC','M']"   125     0     Infinity   0
 26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
-27   "amount_stage['RG','A']"     0     0     Infinity   0.0042
-28   "amount_stage['RG','M']"     0     0     Infinity   0.001
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
 ;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 4
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 5
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 6
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 7
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 8
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 9
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 10
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 11
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 12
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 13
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 14
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 15
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 16
+
+: _objname    _obj      :=
+1   cost     73.1625
+;
+
+:            _varname          _var _var.lb   _var.ub      _var.rc      :=
+1    "amount['BC']"               0     0     Infinity   0.004
+2    "amount['BG']"               0     0     Infinity   0.014
+3    "amount['GB']"               0     0     Infinity   6.93889e-18
+4    "amount['GC']"             500     0     Infinity   0
+5    "amount['RB']"               0     0     Infinity   0
+6    "amount['RC']"             500     0     Infinity   0
+7    "amount['RG']"               0     0     Infinity   0.01
+8    "amount_stage['BC','N']"   100     0     Infinity   0
+9    "amount_stage['BC','A']"   100     0     Infinity   0
+10   "amount_stage['BC','M']"   100     0     Infinity   0
+11   "amount_stage['BG','N']"     0     0     Infinity   0.0119
+12   "amount_stage['BG','A']"     0     0     Infinity   0.0034
+13   "amount_stage['BG','M']"     0     0     Infinity   0.0017
+14   "amount_stage['GB','N']"     0     0     Infinity   0.0028
+15   "amount_stage['GB','A']"     0     0     Infinity   0.0008
+16   "amount_stage['GB','M']"     0     0     Infinity   0.0004
+17   "amount_stage['GC','N']"   400     0     Infinity   0
+18   "amount_stage['GC','A']"   650     0     Infinity   0
+19   "amount_stage['GC','M']"   775     0     Infinity   0
+20   "amount_stage['RB','N']"     0     0     Infinity   0.0028
+21   "amount_stage['RB','A']"     0     0     Infinity   0.0008
+22   "amount_stage['RB','M']"     0     0     Infinity   0.0004
+23   "amount_stage['RC','N']"   500     0     Infinity   0
+24   "amount_stage['RC','A']"   250     0     Infinity   0
+25   "amount_stage['RC','M']"   125     0     Infinity   0
+26   "amount_stage['RG','N']"     0     0     Infinity   0.0119
+27   "amount_stage['RG','A']"     0     0     Infinity   0.0034
+28   "amount_stage['RG','M']"     0     0     Infinity   0.0017
+;
+
+:             _conname           _con.slack _con.dual    :=
+1    meetDemand                       0        0.057
+2    "meetDemand_stage['N']"          0        0.0637
+3    "meetDemand_stage['A']"          0        0.0182
+4    "meetDemand_stage['M']"          0        0.0091
+5    batteryLimit                     0       -0.029
+6    "batteryLimit_stage['N']"        0        0.063
+7    "batteryLimit_stage['A']"        0        0.018
+8    "batteryLimit_stage['M']"        0        0.009
+9    resourcesLimit                   0       -0.057
+10   "resourcesLimit_stage['N']"      0       -0.0637
+11   "resourcesLimit_stage['A']"      0       -0.0182
+12   "resourcesLimit_stage['M']"      0       -0.0091
+;
+
+t = 17
 

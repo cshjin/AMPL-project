@@ -1,31 +1,21 @@
 : _objname   _obj     :=
-1   cost     41.05
+1   cost     25.75
 ;
 
 :      _varname     _var _var.lb   _var.ub  _var.rc    :=
 1   "amount['BC']"    50     0     Infinity   0
-2   "amount['BG']"     0     0     Infinity   0.017
+2   "amount['BG']"     0     0     Infinity   0.01
 3   "amount['GB']"     0     0     Infinity   0.004
 4   "amount['GC']"   450     0     Infinity   0
 5   "amount['RB']"     0     0     Infinity   0.004
 6   "amount['RC']"   500     0     Infinity   0
-7   "amount['RG']"     0     0     Infinity   0.017
-;
-
-:      _varname      _var.down  _var.current    _var.up     :=
-1   "amount['BC']"       -0.003      0.001         0.018
-2   "amount['BG']"       -0.09      -0.073     1e+20
-3   "amount['GB']"        0.09       0.094     1e+20
-4   "amount['GC']"        0.074      0.091         0.095
-5   "amount['RB']"       -0.001      0.003     1e+20
-6   "amount['RC']"   -1e+20          0             0.004
-7   "amount['RG']"       -0.091     -0.074     1e+20
+7   "amount['RG']"     0     0     Infinity   0.01
 ;
 
 :      _conname    _con.slack _con.dual    :=
-1   meetDemand          0        0.091
-2   batteryLimit        0        0.09
-3   resourcesLimit      0       -0.091
+1   meetDemand          0        0.057
+2   batteryLimit        0        0.056
+3   resourcesLimit      0       -0.057
 ;
 
 :      _conname    _con.down _con.current _con.up    :=

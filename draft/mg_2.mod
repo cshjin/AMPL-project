@@ -2,7 +2,8 @@ model;
 
 set Directions;
 set Scenarios;
-set Time;
+param SIZE;
+set Time:={1..SIZE};
 
 param P{s in Scenarios};
 param InitBattery;
@@ -14,8 +15,9 @@ param TransitionPrice;
 param ReservePrice;
 param SellingPrice;
 param BuyingPrice;
-param SellingPrice_stage{s in Scenarios};
-param BuyingPrice_stage{s in Scenarios};
+param SellingPrice_stage;
+param BuyingPrice_stage;
+param WindSpeed{t in Time};
 
 var amount{d in Directions} >=0;
 var amount_stage{d in Directions, s in Scenarios} >=0, suffix stage 2;
@@ -44,10 +46,10 @@ minimize cost:
 			-amount_stage['BG',s]
 			+amount_stage['GB',s]
 			+amount_stage['RB',s]) +
-		BuyingPrice_stage[s] * (
+		BuyingPrice_stage * (
 			amount_stage['GB',s] 
 			+ amount_stage['GC',s]) -
-		SellingPrice_stage[s] * (
+		SellingPrice_stage * (
 			amount_stage['BG',s] 
 			+ amount_stage['RG',s]));
 
@@ -81,7 +83,7 @@ data;
 
 set Directions:= BC BG GB GC RB RC RG;
 set Scenarios := N A M;
-set Time := 1 2;
+param SIZE:=8759;
 param P:=
 	N 0.7
 	A 0.2
@@ -96,13 +98,14 @@ param Resources_stage :=
 param BatteryCapacity := 100;
 param TransitionPrice := 0.002;
 param ReservePrice := 0.001;
-param SellingPrice := 0.074;
-param BuyingPrice :=0.091;
-param SellingPrice_stage :=
-	N 0.074
-	A 0.063
-	M 0.047;
-param BuyingPrice_stage :=
-	N 0.091
-	A 0.084
-	M 0.057;
+param SellingPrice := 0.047;
+param BuyingPrice :=0.057;
+param SellingPrice_stage := 0.074;
+#	N 0.074
+#	A 0.063
+#	M 0.047;
+param BuyingPrice_stage := 0.091;
+#	N 0.091
+#	A 0.084
+#	M 0.057;
+# param WindSpeed :=;
