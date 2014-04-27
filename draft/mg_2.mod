@@ -90,22 +90,22 @@ param P:=
 	M 0.1;
 param InitBattery:= 50;
 param Demand:= 1000;
-param Resources := 500;
+param Resources := 800;
 param Resources_stage := 
-	N 500
-	A 250
-	M 125;
+	N 800
+	A 400
+	M 200;
 param BatteryCapacity := 100;
 param TransitionPrice := 0.002;
 param ReservePrice := 0.001;
-param SellingPrice := 0.047;
-param BuyingPrice :=0.057;
-param SellingPrice_stage := 0.074;
+param SellingPrice := 0.0408;
+param BuyingPrice :=0.051;
+param SellingPrice_stage := 0.0408;
 #	N 0.074
 #	A 0.063
 #	M 0.047;
-param BuyingPrice_stage := 0.091;
+param BuyingPrice_stage := 0.051;
 #	N 0.091
 #	A 0.084
 #	M 0.057;
-# param WindSpeed :=;
+param WindSpeed default 0;

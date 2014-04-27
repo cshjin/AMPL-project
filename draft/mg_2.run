@@ -11,7 +11,7 @@ option precision 4;
 option show_stats 1;
 include mg_2.mod;
 option show_stats 1;
-for { t in 1.. SIZE} {
+for { t in 1.. 1} {
 	display t > mg_2.out;
 	solve;
 	
@@ -37,4 +37,6 @@ for { t in 1.. SIZE} {
 						- amount['BG'] - amount['BC'];
 
 }
+	# read {t in Time} WindSpeed[t] < WindSpeed.txt;
+	read WindSpeed < WindSpeed.txt;
 
