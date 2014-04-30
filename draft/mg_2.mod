@@ -9,6 +9,7 @@ param P{s in Scenarios};
 param InitBattery;
 param Demand;
 param Resources;
+param Demand_stage;
 param Resources_stage{s in Scenarios};
 param BatteryCapacity;
 param TransitionPrice;
@@ -58,7 +59,7 @@ s.t. meetDemand:
 		>= Demand;
 s.t. meetDemand_stage{s in Scenarios}:
 	amount_stage['BC',s]+amount_stage['GC',s]+ amount_stage['RC',s]
-		>=Demand;
+		>=Demand_stage;
 
 s.t. batteryLimit:
 	0 <= InitBattery-amount['BC'] - amount['BG']
@@ -90,6 +91,7 @@ param P:=
 	M 0.1;
 param InitBattery:= 50;
 param Demand:= 1000;
+param Demand_stage := 250;
 param Resources := 800;
 param Resources_stage := 
 	N 800
@@ -101,11 +103,9 @@ param ReservePrice := 0.001;
 param SellingPrice := 0.0408;
 param BuyingPrice :=0.051;
 param SellingPrice_stage := 0.0408;
-#	N 0.074
-#	A 0.063
-#	M 0.047;
 param BuyingPrice_stage := 0.051;
-#	N 0.091
-#	A 0.084
-#	M 0.057;
 param WindSpeed default 0;
+
+#0.051	0.0408
+#0.081	0.0648
+#0.099	0.0792

@@ -37,6 +37,6 @@ for { t in 1.. 1} {
 						- amount['BG'] - amount['BC'];
 
 }
-	# read {t in Time} WindSpeed[t] < WindSpeed.txt;
-	read WindSpeed < WindSpeed.txt;
+	read {t in Time} WindSpeed[t] < WindSpeed.txt;
+	# read WindSpeed < WindSpeed.txt;
 

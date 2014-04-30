@@ -35,9 +35,10 @@ set Directions:= BC BG GB GC RB RC RG;
 
 param InitBattery := 50;
 param Demand := 250;
-param Resources := 400;
+param Resources := 200;
 param BatteryCapacity := 100;
 param TransitionPrice := 0.002;
 param ReservePrice := 0.001;
-param SellingPrice := 0.0408;
-param BuyingPrice :=0.051;
+param SellingPrice := 0.0792;
+param BuyingPrice :=0.099;
+
