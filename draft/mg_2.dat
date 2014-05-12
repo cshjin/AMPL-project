@@ -1,0 +1,33 @@
+######################## data ########################
+data;
+
+set Directions:= BC BG GB GC RB RC RG;
+set Scenarios := N A M;
+param SIZE:=8759;
+param P:=
+	N 0.7
+	A 0.2
+	M 0.1;
+param InitBattery:= 50;
+param Demand:= 1000;
+param Demand_stage := 250;
+param Resources := 800;
+param Resources_stage := 
+	N 800
+	A 400
+	M 200;
+param BatteryCapacity := 100;
+param TransitionPrice := 0.002;
+param ReservePrice := 0.001;
+param SellingPrice := 0.0408;
+param BuyingPrice :=0.051;
+param SellingPrice_stage := 0.0408;
+param BuyingPrice_stage := 0.051;
+param WindSpeed default 0;
+param CoolingDegreeHours default 0;
+param HeatDegreeHours default 0;
+param CloudOvercastPercentage default 0;
+
+#0.051	0.0408
+#0.081	0.0648
+#0.099	0.0792

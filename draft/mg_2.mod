@@ -5,6 +5,7 @@ set Scenarios;
 param SIZE;
 set Time:={1..SIZE};
 
+param Pi:= 4 * atan(1);
 param P{s in Scenarios};
 param InitBattery;
 param Demand;
@@ -19,6 +20,15 @@ param BuyingPrice;
 param SellingPrice_stage;
 param BuyingPrice_stage;
 param WindSpeed{t in Time};
+param CoolingDegreeHours{t in Time};
+param HeatDegreeHours{t in Time};
+param CloudOvercastPercentage {t in Time};
+param StateSequence {t in Time};
+param SolarRadi {t in Time};
+param Buying {t in Time};
+param Selling {t in Time};
+param DemandSeq {t in Time};
+param ResourcesSeq {t in Time};
 
 var amount{d in Directions} >=0;
 var amount_stage{d in Directions, s in Scenarios} >=0, suffix stage 2;
@@ -75,37 +85,3 @@ s.t. resourcesLimit:
 	amount['RB'] + amount['RC'] + amount['RG'] <=Resources;
 s.t. resourcesLimit_stage{s in Scenarios}:
 	amount_stage['RB',s] + amount_stage['RC',s] + amount_stage['RG',s] <=Resources_stage[s];
-
-
-
-
-######################## data ########################
-data;
-
-set Directions:= BC BG GB GC RB RC RG;
-set Scenarios := N A M;
-param SIZE:=8759;
-param P:=
-	N 0.7
-	A 0.2
-	M 0.1;
-param InitBattery:= 50;
-param Demand:= 1000;
-param Demand_stage := 250;
-param Resources := 800;
-param Resources_stage := 
-	N 800
-	A 400
-	M 200;
-param BatteryCapacity := 100;
-param TransitionPrice := 0.002;
-param ReservePrice := 0.001;
-param SellingPrice := 0.0408;
-param BuyingPrice :=0.051;
-param SellingPrice_stage := 0.0408;
-param BuyingPrice_stage := 0.051;
-param WindSpeed default 0;
-
-#0.051	0.0408
-#0.081	0.0648
-#0.099	0.0792
