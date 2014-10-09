@@ -117,9 +117,9 @@ def get_history_using_HTTP():
 #                 condition.append(each["Conditions"])
 #     return condition
 
-def add_condition_to_solar():
+def add_condition_to_solar(lst):
     """
-    Add weather cnditin to the last column of solar data
+    Add weather condition to the last column of solar data
     """
     with open(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar.csv"), "r") as csvinput:
         with open(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"), 'w') as csvoutput:
@@ -129,7 +129,7 @@ def add_condition_to_solar():
             row = next(reader)
             row.append('Conditions')
             all.append(row)
-            conds = iter(get_weather_field("Conditions"))
+            conds = iter(lst)
             for row in reader:
                 row.append(conds.next())
                 all.append(row)
@@ -194,7 +194,6 @@ def merge_weather_csv_files():
 
 def get_weather_field(fieldname):
     columns = defaultdict(list)  # each value in each column is appended to a list
-
     with open(os.path.join(CURRENT_FOLDER, "weather_data", "total_20_years_weather.csv"), "r") as f:
         reader = csv.DictReader(f)  # read rows into a dictionary format
         for row in reader:  # read a row as {column1: value1, column2: value2,...}
@@ -210,13 +209,26 @@ def plot_weather():
     plotfile(fname, (2, 5))
 
 
-def get_csv_data_size(file_path):
+def get_csv_data_size(filename):
     """
     Get the row size of a csv file.
     """
-    with open(file_path) as in_file:
+    with open(filename) as in_file:
         in_file.readline()
         return len(in_file.readlines())
+
+
+def get_dict_data(filename):
+    """
+    Get dictionary data from a cvs file
+    """
+    data_dic = defaultdict(list)
+    with open(filename, "r") as in_file:
+        reader = csv.DictReader(in_file)
+        for row in reader:
+            for (k, v) in row.items():
+                data_dic[k].append(v)
+    return data_dic
 
 
 def get_weather_data_dic():
@@ -288,8 +300,95 @@ def _main():
     #
 
     # filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
+    
+    # **************************************************************************
+    cond_list = list()
+    ori_cond_list = get_weather_field("Conditions")
+    ori_time_list = get_weather_field("DateUTC")
+    local_time_list = [_convert_to_LST(i) for i in ori_time_list]
+    time_size = len(local_time_list)
+    print time_size
+    temp = []
+    # time_size = 10
+    i, j = 0, 1
+    while j < time_size:
+        # temp.append(ori_cond_list[i])
+        gap_size = (local_time_list[j]-local_time_list[i]).total_seconds()/60
+        temp.extend([ori_cond_list[i] for x in range(int(gap_size))])
+        j+=1
+        i+=1
+    # print len(temp)
+    condi = []
+    i = 0
+    less30 = 0
+    while i < len(temp) - 1:
+        t = []
+        for j in range(60):
+            t.append(temp[i+j])
+        i += 60
+        condi.append(max(set(t), key=t.count))
 
-    # Demo goes here!!!
+        if Counter(t).most_common(1)[0][1] < 30:
+            less30 += 1
+    print less30
+    # print len(condi)
+    # print condi[:100]
+    add_condition_to_solar(condi)
+
+    # **************************************************************************
+    # filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
+    # data_dic = defaultdict(list)
+    # with open(filename, "r") as in_file:
+    #     reader = csv.DictReader(in_file)
+    #     for row in reader:
+    #         for (k, v) in row.items():
+    #             data_dic[k].append(v)
+    # data_size = len(data_dic["HH:MM (LST)"])
+    # j = 0
+    # for i in range(data_size):
+    #     # for j in range(len(local_time_list)):
+    #     date = data_dic["YYYY-MM-DD"][i].split("-")
+    #     year = date[0]
+    #     month = date[1]
+    #     day = date[2]
+    #     time = data_dic["HH:MM (LST)"][i].split(":")
+    #     hour = str(int(time[0])%24).zfill(2)
+    #     minute = time[1][:2]
+    #     # solar_time = datetime.strptime(data_dic["YYYY-MM-DD"][i]+" "+str(int(data_dic["HH:MM (LST)"][i][:2])%24).zfill(2)+data_dic["HH:MM (LST)"][i][2:], "%Y-%m-%d %H:%M")
+    #     solar_time = datetime.strptime(year+"-"+month+"-"+day+" "+hour+":"+minute, "%Y-%m-%d %H:%M")
+    #     if hour == "00":
+    #         solar_time = solar_time + timedelta(days=1)
+        
+    #     if solar_time == local_time_list[i].replace(tzinfo=None):
+    #         # print solar_time, local_time_list[i].replace(tzinfo=None)
+    #         cond_list.append(ori_cond_list[i])
+    #     elif solar_time > local_time_list[i].replace(tzinfo=None):
+    #         # print solar_time, local_time_list[i].replace(tzinfo=None)
+
+    #         temp = []
+    #         index = i
+    #         while solar_time >= local_time_list[index].replace(tzinfo=None):
+    #             temp.append(ori_cond_list[index])
+    #             index += 1
+    #         cond_list.append(max(set(temp), key=temp.count))
+    #     else:
+    #         # print solar_time, local_time_list[i].replace(tzinfo=None)
+
+    #         temp = []
+    #         index = i
+    #         while solar_time <= local_time_list[index].replace(tzinfo=None):
+    #             temp.append(ori_cond_list[index])
+    #             index -= 1
+    #         cond_list.append(max(set(temp), key=temp.count))
+
+    #     # else:
+    #     #     j += 1
+    # # print cond_list
+    # add_condition_to_solar(cond_list)
+    # _demo()
+
+def _demo():
+        # Demo goes here!!!
     filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
     data_dic = defaultdict(list)
     with open(filename, "r") as in_file:
@@ -370,5 +469,6 @@ def _main():
                 data_dic[k].append(v)
     print "----------------"
     print "The simulated load energy of a single residental house will be ", float(data_dic["load"][int(hours)+1])*1000, "Wh"
+
 if __name__ == '__main__':
     _main()

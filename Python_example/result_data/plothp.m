@@ -1,5 +1,5 @@
 figure(1)
-name = 'majority_matrix';
+name = 'new_majority_matrix2';
 new_matrix = load(strcat(name,'.csv'));
 hp = HeatMap(new_matrix);
 plot(hp, 1);
