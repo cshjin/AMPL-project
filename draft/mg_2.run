@@ -3,9 +3,9 @@
 #----------------------------------------
 
 reset;
-option solver CPLEX;
+option solver gurobi;
 option presolve 1;
-option cplex_options 'sensitivity';
+# option cplex_options 'sensitivity';
 option precision 4;
 #option show_stats 1;
 include mg_2.mod;
@@ -23,7 +23,7 @@ read {t in Time} DemandSeq[t] < Demand.txt;
 read {t in Time} ResourcesSeq[t] < Resources.txt;
 
 ## one approach
-for { t in 1..SIZE} {
+for { t in 1..30} {
 #	let Demand := HeatDegreeHours[t]*1000+CoolingDegreeHours[t]*1000
 #				+ Uniform(500,5000);
 #	let Resources := 0.5 * 0.5 * 5 * 5 * 1.27 * Pi
@@ -54,12 +54,13 @@ for { t in 1..SIZE} {
 
 	let BuyingPrice := Buying[t];
 	let SellingPrice := Selling[t];
-	let BuyingPrice_stage := Buying[{t+1 mod SIZE}];
-	let SellingPrice_stage := Selling[{t+1 mod SIZE}];
+	# print Buying[t+1];
+	let BuyingPrice_stage := Buying[t+1 mod SIZE];
+	let SellingPrice_stage := Selling[t+1 mod SIZE];
 	let Demand_stage := DemandSeq[t+1 mod SIZE];
-	let Resources_stage["N"]:=ResourcesSeq[{t+1 mod SIZE}];
-	let Resources_stage["A"]:=ResourcesSeq[{t+1 mod SIZE]/2;
-	let Resources_stage["M"]:=ResourcesSeq[{t+1 mod SIZE}]/4;
+	let Resources_stage["N"]:=ResourcesSeq[t+1 mod SIZE];
+	let Resources_stage["A"]:=ResourcesSeq[t+1 mod SIZE]/2;
+	let Resources_stage["M"]:=ResourcesSeq[t+1 mod SIZE]/4;
 
 	print t > mg_2.out;
 	solve;
