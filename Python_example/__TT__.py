@@ -20,9 +20,14 @@ def get_dict_data(filename):
 
 
 def main():
-    filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
-    dic = get_dict_data(filename)
-    print dic.keys()
+    t = {}
+    with open("./result_data/count_condi_majority") as input_file:
+        with open("./result_data/count_condi_majority.csv", "w") as output_file:
+            for line in input_file:
+                output_file.write("{0},{1},{2}\n".format(line.split(":")[0], line.split(":")[1].strip(), float(line.split(":")[1].strip())/175320))
+    # filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
+    # dic = get_dict_data(filename)
+    # print dic.keys()
 
 if __name__ == '__main__':
     main()
