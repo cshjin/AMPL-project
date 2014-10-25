@@ -1,0 +1,23 @@
+## this is a command file 
+
+# reset all the previous parameters variable and data.
+reset;
+# include model and data file
+include mg.mod;
+include mg.dat;
+
+# show running time
+option times 1;
+# show model statistics, variable number, constraint number etc.
+option show_stats 1;
+# set solver option
+option solver cplex;
+# presolve the problem to reduce the number of constriants
+option presolve 1;
+
+solve;
+
+# show objective value
+display _obj > mg.out;
+# show variable value, stage, reduced cost, 
+display _varname, _var, _var.stage, _var.rc > mg.out;
