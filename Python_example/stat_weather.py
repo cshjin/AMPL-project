@@ -1,6 +1,6 @@
 import get_weather
 from datetime import datetime
-from collections import defaultdict, Counter
+from collections import defaultdict, Counter, OrderedDict
 import matplotlib.pyplot as plt
 import itertools
 import numpy
@@ -31,7 +31,7 @@ def cond_stat(conds, timedelta=1):
     """
     # get the unique list of weather condition
     conds_unique = _get_unique_list(conds)
-    print conds_unique
+    # print conds_unique
     # initial the possible outcomes from condition to condition
     conds_pairs = list(itertools.product(conds_unique, repeat=2))
     dic = dict((pair, 0.) for pair in conds_pairs)
@@ -69,9 +69,10 @@ def cond_stat(conds, timedelta=1):
     # print len(pairs)
     # print len(Counter(pairs))
     # print sorted(Counter(pairs).items())
+    # print dic.keys()
+    dic = OrderedDict(sorted(dic.items()))     
     # get the count values
     count_list = dic.values()
-    print dic.keys()
     # get the matrix form of counts
     count_matrix = numpy.array(count_list).reshape((len(conds_unique), len(conds_unique)))
     # get sum of each row
@@ -80,7 +81,7 @@ def cond_stat(conds, timedelta=1):
     prob_matrix = (count_matrix.T / count_matrix.sum(axis=1)).T
     # set print options of numpy
     numpy.set_printoptions(precision=2, edgeitems=0, threshold=numpy.nan, linewidth=numpy.nan, suppress=True)
-
+    print numpy.diag(prob_matrix)
     return prob_matrix
     # prob_list = [float(i)/len(conds_unique) for i in dic.values()]
     # print prob_list
@@ -178,15 +179,19 @@ def _main():
     # print diff_matrix
     # print numpy.linalg.eig(diff_matrix)
     # prob = get_prob("2014-09-17 15:00", "Clear")
-    filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
-    # filename = os.path.join(os.path.join(CURRENT_FOLDER, "weather_data", "total_20_years_weather.csv"))
+    # filename = os.path.join(os.path.join(CURRENT_FOLDER, "solar_data", "total_20_years_solar_with_weather.csv"))
+    filename = os.path.join(os.path.join(CURRENT_FOLDER, "weather_data", "total_20_years_weather.csv"))
     dic = get_weather.get_dict_data(filename)
     conds = dic["Conditions"]
     print Counter(conds)
     majority_matrix = cond_stat(conds)
-    with open("./result_data/new_majority_matrix.txt", "w") as output:
+    # with open("./result_data/new_majority_matrix.txt", "w") as output:
+    #     output.write(str(majority_matrix))
+    # numpy.savetxt("./result_data/new_majority_matrix2.csv", majority_matrix, fmt="%.4f", delimiter=",")
+
+    with open("./result_data/normal_matrix.txt", "w") as output:
         output.write(str(majority_matrix))
-    numpy.savetxt("./result_data/new_majority_matrix2.csv", majority_matrix, fmt="%.4f", delimiter=",")
+    numpy.savetxt("./result_data/normal_matrix.csv", majority_matrix, fmt="%.4f", delimiter=",")
 
 if __name__ == '__main__':
     _main()

@@ -398,7 +398,7 @@ def _demo():
                 data_dic[k].append(v)
     data_size = len(data_dic["HH:MM (LST)"])
 
-    current_date, current_time, current_cond = "10-01", "14:00", "Partly Cloudy"
+    current_date, current_time, current_cond = "10-21", "14:00", "Partly Cloudy"
     print "Current_time:", current_date, current_time
     print "Condition:", current_cond
 
@@ -471,4 +471,5 @@ def _demo():
     print "The simulated load energy of a single residental house will be ", float(data_dic["load"][int(hours)+1])*1000, "Wh"
 
 if __name__ == '__main__':
-    _main()
+    # _main()
+    _demo()
