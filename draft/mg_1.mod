@@ -1,7 +1,7 @@
 model;
-
+param SIZE:=8760;
 set Directions;
-
+set Time := {1..SIZE-1};
 param InitBattery;
 param Demand;
 param Resources;
@@ -10,7 +10,11 @@ param TransitionPrice;
 param ReservePrice;
 param SellingPrice;
 param BuyingPrice;
-
+param Buying {t in Time};
+param Selling {t in Time};
+param DemandSeq {t in Time};
+param ResourcesSeq {t in Time};
+param InitBatterySeq {t in Time};
 var amount{d in Directions} >=0;
 
 minimize cost:
@@ -18,7 +22,7 @@ minimize cost:
 		+amount['GB']+amount['RB']) +
 	ReservePrice * (InitBattery-amount['BC'] - amount['BG']
 		+amount['GB']+amount['RB']) +
-	BuyingPrice * (amount['GB'] + amount['GC']) -
+	BuyingPrice * (amount['GB'] + amount['GC'] + InitBattery) -
 	SellingPrice * (amount['BG'] + amount['RG']);
 
 s.t. meetDemand:
@@ -33,11 +37,7 @@ data;
 
 set Directions:= BC BG GB GC RB RC RG;
 
-param InitBattery := 50;
-param Demand := 44175;
-param Resources := 27248;
-param BatteryCapacity := 100;
+param InitBattery := 500;
+param BatteryCapacity := 1000;
 param TransitionPrice := 0.002;
 param ReservePrice := 0.001;
-param SellingPrice := 0.0408;
-param BuyingPrice :=0.051;
