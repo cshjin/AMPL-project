@@ -23,7 +23,7 @@ read {t in Time} DemandSeq[t] < Demand.txt;
 read {t in Time} ResourcesSeq[t] < Resources.txt;
 
 ## one approach
-for { t in 1..30} {
+for { t in 1..SIZE-1 by 2} {
 #	let Demand := HeatDegreeHours[t]*1000+CoolingDegreeHours[t]*1000
 #				+ Uniform(500,5000);
 #	let Resources := 0.5 * 0.5 * 5 * 5 * 1.27 * Pi
@@ -58,16 +58,98 @@ for { t in 1..30} {
 	let BuyingPrice_stage := Buying[t+1 mod SIZE];
 	let SellingPrice_stage := Selling[t+1 mod SIZE];
 	let Demand_stage := DemandSeq[t+1 mod SIZE];
-	let Resources_stage["N"]:=ResourcesSeq[t+1 mod SIZE];
-	let Resources_stage["A"]:=ResourcesSeq[t+1 mod SIZE]/2;
-	let Resources_stage["M"]:=ResourcesSeq[t+1 mod SIZE]/4;
+	let Resources_stage["N"] := ResourcesSeq[t+1 mod SIZE];
+	let Resources_stage["A"] := ResourcesSeq[t+1 mod SIZE]/2;
+	let Resources_stage["M"] := ResourcesSeq[t+1 mod SIZE]/4;
 
 	print t > mg_2.out;
 	solve;
-
+	display TransitionPrice * (amount['BC']+amount['BG']
+		+amount['GB']+amount['RB']) +
+	ReservePrice * (InitBattery-amount['BC'] - amount['BG']
+		+amount['GB']+amount['RB']) +
+	BuyingPrice * (amount['GB'] + amount['GC']) -
+	SellingPrice * (amount['BG'] + amount['RG']) >mg_2.out;
+	# display sum {s in Scenarios} 
+	if StateSequence[t+1] = 1
+		then {
+			display (
+		TransitionPrice * (
+			amount_stage['BC','N']
+			+amount_stage['BG','N']
+			+amount_stage['GB','N']
+			+amount_stage['RB','N']) +
+		ReservePrice * (
+			InitBattery
+			-amount['BC'] 
+			-amount['BG']
+			+amount['GB']
+			+amount['RB'] 
+			-amount_stage['BC','N']
+			-amount_stage['BG','N']
+			+amount_stage['GB','N']
+			+amount_stage['RB','N']) +
+		BuyingPrice_stage * (
+			amount_stage['GB','N'] 
+			+ amount_stage['GC','N']) -
+		SellingPrice_stage * (
+			amount_stage['BG','N'] 
+			+ amount_stage['RG','N'])) > mg_2.out;
+		}
+	else if StateSequence[t+1] = 2 # A
+		then {
+			display (
+		TransitionPrice * (
+			amount_stage['BC','A']
+			+amount_stage['BG','A']
+			+amount_stage['GB','A']
+			+amount_stage['RB','A']) +
+		ReservePrice * (
+			InitBattery
+			-amount['BC'] 
+			-amount['BG']
+			+amount['GB']
+			+amount['RB'] 
+			-amount_stage['BC','A']
+			-amount_stage['BG','A']
+			+amount_stage['GB','A']
+			+amount_stage['RB','A']) +
+		BuyingPrice_stage * (
+			amount_stage['GB','A'] 
+			+ amount_stage['GC','A']) -
+		SellingPrice_stage * (
+			amount_stage['BG','A'] 
+			+ amount_stage['RG','A'])) > mg_2.out;
+		}
+	else if StateSequence[t+1] = 3 # M
+		then {
+			display (
+		TransitionPrice * (
+			amount_stage['BC','M']
+			+amount_stage['BG','M']
+			+amount_stage['GB','M']
+			+amount_stage['RB','M']) +
+		ReservePrice * (
+			InitBattery
+			-amount['BC'] 
+			-amount['BG']
+			+amount['GB']
+			+amount['RB'] 
+			-amount_stage['BC','M']
+			-amount_stage['BG','M']
+			+amount_stage['GB','M']
+			+amount_stage['RB','M']) +
+		BuyingPrice_stage * (
+			amount_stage['GB','M'] 
+			+ amount_stage['GC','M']) -
+		SellingPrice_stage * (
+			amount_stage['BG','M'] 
+			+ amount_stage['RG','M'])) > mg_2.out;
+		};
 	display _objname, _obj > mg_2.out;
+	# display _objname, _obj > mg_2.out;
 	# Print out the value of the objective function 
-	display _varname, _var, _var.lb,_var.ub, _var.rc > mg_2.out;
+	# display _varname, _var, _var.lb,_var.ub, _var.rc > mg_2.out;
 	# Print out names, values and reduced costs 
 #	display _varname, _var.down, _var.current, _var.up > mg_2.out;
 	# Print out names, objective function coefficients 

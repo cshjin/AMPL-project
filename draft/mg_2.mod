@@ -5,7 +5,7 @@ set Scenarios;
 param SIZE;
 set Time:={1..SIZE};
 
-param Pi:= 4 * atan(1);
+#param Pi:= 4 * atan(1);
 param P{s in Scenarios};
 param InitBattery;
 param Demand;
