@@ -31,3 +31,7 @@ Winston, Wayne L., Munirpallam Venkataramanan, and Jeffrey B. Goldberg. _Introdu
 https://www.me.utexas.edu/~jensen/ORMM/
 
 http://lyle.smu.edu/~olinick/emis8374/handouts
+
+
+### Update
+This is the primary repo for SP model of Microgrid.
