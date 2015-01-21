@@ -1,0 +1,23 @@
+reset;
+option solver cplex;
+option presolve 1;
+# option cplex_options 'sensitivity';
+option precision 4;
+include mg_1_42.mod;
+ 
+read {t in Time} ResourcesSeq[t] < ResourcesSeq.txt;
+read {t in Time} DemandSeq[t] < Demand.txt;
+read {t in Time} Buying[t] < BuyingPrice.txt;
+read {t in Time} Selling[t] < SellingPrice.txt;
+read {t in Time} InitBatterySeq[t] < InitBattery.txt;
+
+for {t in Time} {
+	let Demand := DemandSeq[t];
+	let Resources := ResourcesSeq[t];
+	let SellingPrice := Selling[t];
+	let BuyingPrice := Buying[t];
+	solve;
+	display _objname, _obj > mg_1_42.out;
+	# Simple dicision of battery reserve
+	let InitBattery := InitBatterySeq[t];
+}
