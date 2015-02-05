@@ -1,7 +1,7 @@
 % 
 X = [cond, rela];
-
-size = 12;
+X = rela;
+size = 8;
 [idx, C] = kmeans(X, size);
 figure;
 cc = hsv(size);
