@@ -15,6 +15,7 @@ param Selling {t in Time};
 param DemandSeq {t in Time};
 param ResourcesSeq {t in Time};
 param InitBatterySeq {t in Time};
+param totalCost {t in Time};
 var amount{d in Directions} >=0;
 
 minimize cost:

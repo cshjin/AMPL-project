@@ -13,13 +13,14 @@ read {t in Time} Buying[t] < BuyingPrice.txt;
 read {t in Time} Selling[t] < SellingPrice.txt;
 read {t in Time} InitBatterySeq[t] < InitBattery.txt;
 
-for {t in Time} {
+for {t in 1..10} {
 	let Demand := DemandSeq[t];
 	let Resources := ResourcesSeq[t];
 	let SellingPrice := Selling[t];
 	let BuyingPrice := Buying[t];
 	solve;
-	display _objname, _obj > mg_1.out;
+	totalCost[t] := _obj;
+	# display _objname, _obj > mg_1.out;
 	let InitBattery := InitBatterySeq[t];
 }
 
