@@ -54,69 +54,6 @@ def get_history_using_HTTP():
         work_day = work_day + timedelta(days=1)
 
 
-# def convert_to_json():
-#     """
-#     Convert yearly solar data into json format.
-#     NOTE: it will cost much more spaces.
-#     """
-# with open("wunderground_1991_01_01.csv", "r") as inFile:
-#     for year in range(1991, 2011):
-#         with open("..\\Weather_Data\\725340\\725340_" + str(year) + "_solar.csv", "r") as inFile:
-#             fieldnames = inFile.readline().strip("\n").split(",")
-#             fieldnames = [i.strip() for i in fieldnames]
-#             reader = csv.DictReader(inFile, fieldnames)
-
-#             out_data = {}
-#             out_data["history"] = []
-#             with open(os.path.join(CURRENT_FOLDER, "725340_" + str(year) + "_solar.json"), "w") as outFile:
-#                 for row in reader:
-#                     out_data["history"].append(row)
-# json.dump(row, outFile, indent = 4, sort_keys = True)
-# outFile.write(",")
-#                 json.dump(out_data, outFile, indent=4, sort_keys=True)
-#     pass
-
-
-# def convert_weather_to_json():
-#     '''
-#     Convert weather underground weather data into json file.
-#     NOTE: it will cost much more spaces.
-#     '''
-#     num_days = (END_DATE - START_DATE).days
-#     work_day = START_DATE
-#     for i in range(num_days):
-#         y = work_day.year
-#         m = "%02d" % work_day.month
-#         d = "%02d" % work_day.day
-# address = "http://www.wunderground.com/history/airport/KMDW/{}/{}/{}/DailyHistory.html?format=1".format(y, m, d)
-#         filename = os.path.join(CURRENT_FOLDER, "wunderground_{}_{}_{}.csv".format(y, m, d))
-#         out_file = os.path.join(CURRENT_FOLDER, "wunderground_{}_{}_{}.json".format(y, m, d))
-# print filename
-# urllib.urlretrieve(address, filename)
-#         outFile = ""
-#         with open(filename, "r") as inFile:
-#             fieldnames = inFile.readline().strip("\n").split(",")
-#             fieldnames = [i.strip() for i in fieldnames]
-#             reader = csv.DictReader(inFile, fieldnames)
-
-#             out_data = {}
-#             out_data["history"] = []
-#             with open(out_file, "w") as outFile:
-#                 for row in reader:
-#                     out_data["history"].append(row)
-#                 json.dump(out_data, outFile, indent=4, sort_keys=True)
-#         work_day = work_day + timedelta(days=1)
-
-
-# def stat_each_field():
-#     condition = []
-#     with open("test.json", "r") as inFile:
-#         json_data = json.load(inFile)
-#         for each in json_data["history"]:
-#             if each["Conditions"] not in condition:
-#                 condition.append(each["Conditions"])
-#     return condition
-
 def add_condition_to_solar(lst):
     """
     Add weather condition to the last column of solar data
@@ -134,25 +71,6 @@ def add_condition_to_solar(lst):
                 row.append(conds.next())
                 all.append(row)
             writer.writerows(all)
-
-
-# def combine_weather_and_radi():
-#     with open("725340_1991_solar.json", "r") as solar_file:
-#         solar_data = json.load(solar_file)
-#         solar_history = solar_data["history"]
-
-#         with open("test.json", "r") as weather_file:
-#             weather_data = json.load(weather_file)
-#             weather_history = weather_data["history"]
-#             for i in weather_history:
-#                 weather_timestamp = _convert_to_LST(i["DateUTC"])
-#                 for j in solar_history:
-#                     solar_timestamp = datetime.strptime(
-#                         j["YYYY-MM-DD"] + " " + j["HH:MM (LST)"].zfill(5), "'%Y-%m-%d %H:%M")
-#                     if solar_timestamp.year == weather_timestamp.year and solar_timestamp.month == weather_timestamp.month and solar_timestamp.day == weather_timestamp.day and solar_timestamp.hour == weather_timestamp.hour:
-#                         print solar_timestamp.hour
-
-#     pass
 
 
 def merge_solar_csv_files():
