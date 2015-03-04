@@ -1,7 +1,7 @@
 """
     This is a function to calculate the ideal solar radiation of a perticular location
     based on its latitute and day of the year.
-    Ref: 
+    Ref: http://pveducation.org/pvcdrom/properties-of-sunlight/calculation-of-solar-insolation
 """
 
 import math
@@ -22,7 +22,8 @@ def to_deg(c):
 def AM(hour, jDay, lat):
     dec = to_rad(_declination(jDay))
     HRA = to_rad(15 * (hour - 12))
-    elevation = math.asin(math.sin(dec) * math.sin(lat) + math.cos(dec) * math.cos(lat) * math.cos(HRA))
+    elevation = math.asin(
+        math.sin(dec) * math.sin(lat) + math.cos(dec) * math.cos(lat) * math.cos(HRA))
     declination = to_rad(90) - elevation
     return 1 / (1E-4 + math.cos(declination))
 
@@ -57,10 +58,10 @@ def cal(jDay, latitute):
     dec = to_rad(_declination(jDay))
     graphHourly(jDay, lat, dec)
 
+
 def main():
     for i in range(1, 367):
         cal(i, 41)
 
 if __name__ == '__main__':
     main()
-
