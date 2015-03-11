@@ -29,7 +29,6 @@
 'Blowing Snow': 56, 
 'Mist': 55, 
 'Snow Showers': 44, 
-None: 31, 
 'Light Blowing Snow': 30, 
 'Ice Pellets': 13, 
 'Light Thunderstorms and Snow': 6, 
@@ -49,3 +48,5 @@ None: 31,
 'Thunderstorms with Small Hail': 1, 
 'Heavy Ice Pellets': 1, 
 'Thunderstorms and Ice Pellets': 1
+
+None: 31, 
