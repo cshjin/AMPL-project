@@ -3,7 +3,7 @@ data;
 
 set Directions:= BC BG GB GC RB RC RG;
 set Scenarios := N A M;
-param SIZE:=8759;
+param SIZE:=8760;
 param P:=
 	N 0.7
 	A 0.2
