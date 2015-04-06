@@ -1,4 +1,0 @@
-TimeCST,TemperatureF,Dew PointF,Humidity,Sea Level PressureIn,VisibilityMPH,Wind Direction,Wind SpeedMPH,Gust SpeedMPH,PrecipitationIn,Events,Conditions,WindDirDegrees,DateUTC
-1:00 AM,13.1,5.2,71,30.41,15.0,SW,13.8,-,N/A,,Clear,220,1991-01-01 07:00:00
-2:00 AM,13.1,7.2,77,30.39,15.0,SW,13.8,-,N/A,,Most Cloudy,220,1991-01-01 08:00:00
-3:00 AM,13.1,7.2,77,30.39,15.0,SW,13.8,-,N/A,,Thunderstorm,220,1991-01-01 09:00:00
