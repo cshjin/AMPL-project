@@ -1,7 +1,7 @@
 # AMPL-project
 ============
 
-This is a primal project related to course MATH 535, however the AMPL (A mathematical Programming Language) is the main objective. 
+This is a primal project related to course MATH 535 ([Syllabus](https://science.iit.edu/sites/science/files/elements/am/courses/Syllabus_Math_535.pdf)), however the AMPL (A mathematical Programming Language) is the main objective. 
 
 
 [AMPL](http://www.ampl.com) is a comprehensive and powerful algebraic modeling language for linear and nonlinear optimization problems, in discrete or continuous variables.
@@ -32,6 +32,3 @@ https://www.me.utexas.edu/~jensen/ORMM/
 
 http://lyle.smu.edu/~olinick/emis8374/handouts
 
-
-### Update
-This is the primary repo for SP model of Microgrid.
