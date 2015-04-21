@@ -1,0 +1,6 @@
+reset;
+model diet2a.mod;
+data diet2a.dat;
+
+solve;
+display Buy, Buy.rc, {j in FOOD} Buy[j]/f_max[j];

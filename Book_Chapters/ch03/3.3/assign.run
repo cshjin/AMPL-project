@@ -1,0 +1,9 @@
+model assign.mod;
+data assign.dat;
+option solver cplex;
+solve;
+display Trans;
+
+option omit_zero_rows 1; # ignore zero values
+
+display {i in ORIG, j in DEST} cost[i,j] * Trans[i,j];

@@ -1,0 +1,7 @@
+reset;
+model dietu.mod;
+data dietu.dat;
+display MAXREQ union {i in MINREQ: n_min[i] > 0};
+solve;
+display {j in FOOD: Buy[j] > f_min[j]};
+display {i in MINREQ: Diet_Min[i].slack = 0};

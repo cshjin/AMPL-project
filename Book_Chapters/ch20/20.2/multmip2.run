@@ -1,0 +1,6 @@
+reset;
+model multmip2.mod;
+data multmip2.dat;
+
+solve;
+display {i in ORIG, j in DEST} sum {p in PROD} Trans[i, j, p];

@@ -1,0 +1,3 @@
+model diet0.mod;
+solve;
+display Xbeef,Xchk,Xfish,Xham,Xmch,Xmtl,Xspg,Xtur;

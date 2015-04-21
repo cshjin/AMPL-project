@@ -1,0 +1,4 @@
+model prod.mod;
+data prod.dat;
+solve;
+display X;

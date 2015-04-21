@@ -1,0 +1,13 @@
+reset;
+model multmip1.mod;
+data multmip1.dat;
+solve;
+
+option display_eps .000001;
+option display_transpose -10;
+display sum {i in ORIG, j in DEST, p in PROD} vcost[i,j,p] * Trans[i,j,p];
+display Use;
+option solver cplex;
+solve;
+display {i in ORIG, j in DEST} sum {p in PROD} Trans[i,j,p];
+display Use;

@@ -1,0 +1,8 @@
+reset;
+model diet2a.mod;
+data diet2a.dat;
+
+solve;
+table ResultList OUT "DietOpt.tab":
+    [FOOD], Buy, Buy.rc, {j in FOOD} Buy[j]/f_max[j];
+write table ResultList;

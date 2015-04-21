@@ -1,0 +1,7 @@
+reset;
+model econmin.mod;
+data econmin.dat;
+option solver cplex;
+solve;
+display Level;
+display Demand.dual;

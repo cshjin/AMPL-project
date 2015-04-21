@@ -1,0 +1,9 @@
+reset;
+model net3.mod; 
+data net3.dat; 
+solve;
+
+reset;
+model net3node.mod;
+data net3.dat;
+solve;

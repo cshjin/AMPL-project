@@ -1,0 +1,14 @@
+model diet2.mod;
+data diet2.dat;
+solve;
+display Diet.lb, Diet.body, Diet.ub;
+
+
+let n_max["NA"] := 50000;
+solve;
+display Buy;
+
+
+let Buy["BEEF"] := 6;
+let Buy["SPG"] := 10;
+display Diet.lb, Diet.body, Diet.ub;

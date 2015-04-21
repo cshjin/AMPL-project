@@ -1,0 +1,3 @@
+model prod0.mod;
+solve;
+display XB, XC;

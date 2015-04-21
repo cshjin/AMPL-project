@@ -1,0 +1,4 @@
+model steel2.mod;
+data steel2.dat;
+solve;
+display Make;

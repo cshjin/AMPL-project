@@ -1,0 +1,5 @@
+reset;
+model multic.mod;
+data multic.dat;
+solve;
+display {p in PROD}: {i in ORIG, j in DEST} Trans[i,j,p];

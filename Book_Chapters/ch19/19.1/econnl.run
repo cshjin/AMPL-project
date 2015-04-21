@@ -1,0 +1,7 @@
+# TODO: fix it with a new solver
+reset;
+model econnl.mod;
+data econnl.dat;
+# option solver path;
+solve;
+display Level;

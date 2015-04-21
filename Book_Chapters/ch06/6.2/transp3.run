@@ -1,0 +1,4 @@
+model transp3.mod;
+data transp3.dat;
+solve;
+display Trans;

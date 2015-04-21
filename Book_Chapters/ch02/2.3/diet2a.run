@@ -1,0 +1,5 @@
+model diet2a.mod;
+data diet2a.dat;
+option solver cplex;
+solve;
+display Buy;
