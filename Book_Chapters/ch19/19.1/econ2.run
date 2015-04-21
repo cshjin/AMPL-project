@@ -1,0 +1,7 @@
+# TODO: fix it with new solver
+reset;
+model econ2.mod;
+data econ2.dat;
+# option solver path;
+solve;
+display level_min, Level, level_max;

@@ -1,0 +1,34 @@
+# TODO: display data need to be fixed
+reset;
+model transpl1.mod;
+data transpl1.dat;
+solve;
+display avail_min, Use, avail_max;
+
+reset;
+model transpl1.mod;
+data transpl2.dat;
+solve;
+option display_1col 0;
+display Inv;
+display commit,Make,market;
+
+
+reset;
+model transpl2.mod;
+data transpl2.dat;
+solve;
+display avail_max,Use;
+
+
+reset;
+model steelpl3.mod; 
+data steelpl2.dat; 
+solve;
+display Sell,commit;
+
+reset;
+model steelpl4.mod; 
+data steelpl4.dat; 
+solve;
+display Make,Inv,Sell;

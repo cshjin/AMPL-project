@@ -1,0 +1,8 @@
+reset;
+model steelT.mod;
+data steelT.dat;
+solve;
+option display_1col 0;
+display Make;
+display Inv;
+display Sell;

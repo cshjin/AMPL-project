@@ -1,0 +1,5 @@
+model steel.mod;
+model steel.dat;
+solve;
+display Make;
+# expand Total_Profit; # to expand the expression of the variable 

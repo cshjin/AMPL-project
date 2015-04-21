@@ -1,0 +1,8 @@
+reset;
+model sched.mod;
+data sched.dat;
+solve;
+option display_eps .000001;
+option omit_zero_rows 1;
+option display_1col 0, display_width 60;
+display Work;

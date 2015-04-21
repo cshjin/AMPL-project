@@ -1,0 +1,4 @@
+model steel3.mod;
+data steel3.dat;
+solve;
+display commit, Make, market;

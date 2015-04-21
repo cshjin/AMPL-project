@@ -1,0 +1,54 @@
+reset;
+model diet.mod;
+table Foods IN "ODBC" "diet.mdb":
+    FOOD <- [FOOD], cost, f_min, f_max;
+read table Foods;
+display cost, f_min, f_max;
+
+
+reset;
+model diet.mod;
+table Foods IN "ODBC" "diet.xls":
+    FOOD <- [FOOD], cost, f_min, f_max;
+read table Foods;
+display cost, f_min, f_max;
+
+
+# reset;
+# model diet.mod;
+# table Foods IN: FOOD <- [FOOD], cost, f_min, f_max;
+# read table Foods;
+# display cost, f_min, f_max;
+
+
+reset;
+model diet.mod;
+table ImportFoods IN "ODBC" "diet.mdb" "Foods":
+    FOOD <- [FOOD], cost, f_min, f_max;
+table Nutrs IN "ODBC" "diet.mdb": 
+    NUTR <- [NUTR], n_min, n_max;
+table Amts IN "ODBC" "diet.mdb":
+    [NUTR, FOOD], amt;
+read table ImportFoods;
+read table Nutrs;
+read table Amts;
+solve;
+table ExportFoods OUT "ODBC" "diet.tab" "Foods":
+    FOOD <- [FOOD], Buy, Buy.rc ~ BuyRC, {j in FOOD} Buy[j]/f_max[j] ~ BuyFrac;
+write table ExportFoods;
+
+reset;
+model diet.mod;
+table Foods "ODBC" "diet.mdb":
+    [FOOD] IN, cost IN, f_min IN, f_max IN, 
+    Buy OUT, Buy.rc ~ BuyRC OUT, 
+    {j in FOOD} Buy[j]/f_max[j] ˜ BuyFrac OUT;
+table Nutrs IN "ODBC" "diet.mdb":
+    NUTR <- [NUTR], n_min, n_max;
+table Amts IN "ODBC" "diet.mdb": 
+    [NUTR, FOOD], amt;
+read table Foods;
+read table Nutrs;
+read table Amts;
+solve;
+write table Foods;

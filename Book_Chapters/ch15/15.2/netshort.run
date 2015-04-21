@@ -1,0 +1,5 @@
+reset;
+model netshort.mod;
+solve;
+option omit_zero_rows 1;
+display Use;

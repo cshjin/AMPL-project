@@ -1,0 +1,9 @@
+# TODO: fix it with a new solver
+
+reset;
+model econ.mod;
+data econ.dat;
+# solver path needed
+# option solver cplex;
+solve;
+display sum {j in ACT} cost[j] * Level[j];

@@ -1,0 +1,13 @@
+reset;
+model diet.mod;
+data diet2a.dat;
+solve;
+display Buy;
+
+reset;
+model dieti.mod;
+data diet2a.dat;
+solve;
+option solver cplex;
+solve;
+display Buy;

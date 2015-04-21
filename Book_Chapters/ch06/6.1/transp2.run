@@ -1,0 +1,4 @@
+model transp2.mod;
+data transp2.dat;
+solve;
+display Trans;

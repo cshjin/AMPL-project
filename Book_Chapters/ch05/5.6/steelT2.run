@@ -1,0 +1,6 @@
+reset;
+model steelT2.mod;
+data steelT2.dat;
+
+solve;
+display Total_Profit, _var;

@@ -1,0 +1,6 @@
+reset;
+model steel4.mod;
+data steel4.dat;
+solve;
+display Make.lb, Make, Make.ub, Make.rc; # lower bound, value, upper bound, reduced cost
+display Time;

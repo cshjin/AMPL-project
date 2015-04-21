@@ -1,0 +1,8 @@
+model transp.mod;
+data transp.dat;
+solve;
+display Trans;
+
+# option solver snopt; # not available in Win with AMPL, available in Linux dist
+solve;
+display Trans;

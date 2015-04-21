@@ -1,0 +1,25 @@
+# TODO: fix it with new solver
+reset;
+model econ2.mod;
+data econ2.dat;
+# option solver path;
+option show_stats 1;
+
+solve;
+display level_min, Level, level_max;
+
+display Lev_Compl.Llb, Lev_Compl.Lbody, Lev_Compl.Rbody, Lev_Compl.Rslack;
+
+display _ncons, _nccons, _sncons, _snccons;
+
+display {i in PROD} (sum{j in ACT} io[i,j]*level_min[j], demand[i]);
+
+display {i in 1..6} (_conname[i], _cconname[i]);
+
+expand Pri_Compl['AA1'];
+
+expand _con[1], _con[2];
+
+solexpand Pri_Compl['AA1'];
+
+display {i in 1..3} (_sconname[i], _svarname[_scvar[i]]);

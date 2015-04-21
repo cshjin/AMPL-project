@@ -1,0 +1,14 @@
+reset;
+model steelP.mod;
+data steelP.dat;
+option solver cplex;
+option display_1col 5;
+option omit_zero_rows 1, omit_zero_cols 1;
+solve;
+
+display Make;
+display Trans;
+display Time;
+
+display sum {i in ORIG, p in PROD} make_cost[i,p] * Make[i,p];
+display sum {i in ORIG, j in DEST, p in PROD} trans_cost[i,j,p] * Trans[i,j,p];
