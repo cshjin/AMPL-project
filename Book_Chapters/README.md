@@ -22,3 +22,6 @@ in any of its related file to excute *.run file.
 Notes:
 * please have the AMPL and solver application ready in your PATH environment for Linux, Win and MacOS;
 * In this book chapters, two solver are frequently used, MINOS and CPLEX. You can get the trial version from AMPL website.
+
+Ref:
+- [AMPL examples](http://www.ampl.com/BOOK/EXAMPLES/)
